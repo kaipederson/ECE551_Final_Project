@@ -1,11 +1,4 @@
-{I:/ECE 551/Ex22/FIR_HP.sv} {1 {vlog -work work -vopt -sv -stats=none {I:/ECE 551/Ex22/FIR_HP.sv}
-Model Technology ModelSim SE vlog 10.3c Compiler 2014.07 Jul 19 2014
--- Compiling module FIR_HP
-
-Top level modules:
-	FIR_HP
-
-} {} {}} {I:/ECE 551/Ex22/I2S_Slave.sv} {1 {vlog -work work -vopt -sv -stats=none {I:/ECE 551/Ex22/I2S_Slave.sv}
+{I:/ECE 551/Ex22/I2S_Slave.sv} {1 {vlog -work work -vopt -sv -stats=none {I:/ECE 551/Ex22/I2S_Slave.sv}
 Model Technology ModelSim SE vlog 10.3c Compiler 2014.07 Jul 19 2014
 -- Compiling module I2S_Slave
 
@@ -40,33 +33,12 @@ Model Technology ModelSim SE vlog 10.3c Compiler 2014.07 Jul 19 2014
 Top level modules:
 	ROM_HP
 
-} {} {}} {I:/ECE 551/Ex22/FIR_B1.sv} {1 {vlog -work work -vopt -sv -stats=none {I:/ECE 551/Ex22/FIR_B1.sv}
-Model Technology ModelSim SE vlog 10.3c Compiler 2014.07 Jul 19 2014
--- Compiling module FIR_B1
-
-Top level modules:
-	FIR_B1
-
-} {} {}} {I:/ECE 551/Ex22/FIR_LP.sv} {1 {vlog -work work -vopt -sv -stats=none {I:/ECE 551/Ex22/FIR_LP.sv}
-Model Technology ModelSim SE vlog 10.3c Compiler 2014.07 Jul 19 2014
--- Compiling module FIR_LP
-
-Top level modules:
-	FIR_LP
-
 } {} {}} {I:/ECE 551/Ex22/resp_ROM.v} {1 {vlog -work work -vopt -stats=none {I:/ECE 551/Ex22/resp_ROM.v}
 Model Technology ModelSim SE vlog 10.3c Compiler 2014.07 Jul 19 2014
 -- Compiling module resp_ROM
 
 Top level modules:
 	resp_ROM
-
-} {} {}} {I:/ECE 551/Ex22/FIR_B3.sv} {1 {vlog -work work -vopt -sv -stats=none {I:/ECE 551/Ex22/FIR_B3.sv}
-Model Technology ModelSim SE vlog 10.3c Compiler 2014.07 Jul 19 2014
--- Compiling module FIR_B3
-
-Top level modules:
-	FIR_B3
 
 } {} {}} {I:/ECE 551/Ex22/tone_ROM_lft.v} {1 {vlog -work work -vopt -stats=none {I:/ECE 551/Ex22/tone_ROM_lft.v}
 Model Technology ModelSim SE vlog 10.3c Compiler 2014.07 Jul 19 2014

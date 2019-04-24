@@ -1,5 +1,5 @@
 module FIR_HP(lft_in,sequencing,rght_in,lft_out,rght_out,clk,rst_n);
-	input[15:0] lft_in,rght_in;
+	input signed [15:0] lft_in,rght_in;
 	input sequencing,clk,rst_n;
 	output[15:0] lft_out,rght_out;
 	
@@ -70,8 +70,8 @@ module FIR_HP(lft_in,sequencing,rght_in,lft_out,rght_out,clk,rst_n);
 		end
 	end
 	
-	assign lft_out = lft_fltd_sig[30:15];
-	assign rght_out = rght_fltd_sig[30:15];
+	assign lft_out = lft_sig[30:15];
+	assign rght_out = rght_sig[30:15];
 	
 	//counter
 	always@(posedge clk, negedge rst_n)begin

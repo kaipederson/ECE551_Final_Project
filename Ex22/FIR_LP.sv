@@ -1,12 +1,12 @@
 module FIR_LP(lft_in,sequencing,rght_in,lft_out,rght_out,clk,rst_n);
-	input[15:0] lft_in,rght_in;
+	input signed [15:0] lft_in,rght_in;
 	input sequencing,clk,rst_n;
 	output[15:0] lft_out,rght_out;
 	
 	logic accum,clr_accum,clr_ROM_pntr;
 	reg signed [31:0] lft_sig,rght_sig;
 	wire signed [31:0] rght_fltd_sig, lft_fltd_sig;
-	reg[9:0] addr;
+	reg[10:0] addr;
 	wire signed [15:0] scaler;
 	
 	typedef enum reg[1:0]{WAIT,SEQ} state_t;
@@ -70,19 +70,19 @@ module FIR_LP(lft_in,sequencing,rght_in,lft_out,rght_out,clk,rst_n);
 		end
 	end
 	
-	assign lft_out = lft_fltd_sig[30:15];
-	assign rght_out = rght_fltd_sig[30:15];
+	assign lft_out = lft_sig[30:15];
+	assign rght_out = rght_sig[30:15];
 	
 	//counter
 	always@(posedge clk, negedge rst_n)begin
 		if(!rst_n)begin
-			addr = 10'h000;
+			addr = 11'h000;
 		end
 		else begin
 			if(!clr_ROM_pntr)begin
 				addr = addr +1'b1;
 			end
-			else addr = 10'h000;
+			else addr = 11'h000;
 		end
 	end
 	
