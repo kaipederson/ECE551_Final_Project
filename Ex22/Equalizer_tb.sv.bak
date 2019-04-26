@@ -60,7 +60,7 @@ initial begin
 	B2 = 12'h080;
 	B3 = 12'h080;
 	HP = 12'h080;
-	repeat(3000000) @ (posedge clk);
+	repeat(300000) @ (posedge clk);
 	
 	
 	$stop;

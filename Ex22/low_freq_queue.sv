@@ -32,7 +32,9 @@ always @ (posedge clk, negedge rst_n)
 
 always @ (posedge clk, negedge rst_n)
 	if(rst_rd) read_ptr <= old_ptr;
-	else if(inc_read) read_ptr <= read_ptr + 1;
+	else begin
+		if(inc_read) read_ptr <= read_ptr + 1;
+	end
 
 assign end_ptr = old_ptr + 10'd1020;
 assign done = (read_ptr == end_ptr);

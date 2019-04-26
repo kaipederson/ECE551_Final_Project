@@ -40,7 +40,7 @@ always @ (posedge clk, negedge rst_n)
 			new_ptr <= new_ptr + 1;
 	end
 
-always @ (posedge clk, negedge rst_n)
+always @ (posedge clk, posedge rst_rd)
 	if(rst_rd) read_ptr <= old_ptr;
 	else if(inc_read) begin
 		if(read_ptr == 11'd1535)

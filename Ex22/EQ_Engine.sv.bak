@@ -122,7 +122,7 @@ band_scale lftScaleHP(.POT(POT_HP), .audio(lftHPPipe), .scaled(lft_scaled_HP));
 band_scale rghtScaleHP(.POT(POT_HP), .audio(rghtHPPipe), .scaled(rght_scaled_HP));
 
 /// Summation ///
-reg signed[15:0] lftSum, rghtSum;
+reg[15:0] lftSum, rghtSum;
 always @ (posedge clk, negedge rst_n)
 	if(!rst_n) begin
 		lftSum <= 16'h0000;

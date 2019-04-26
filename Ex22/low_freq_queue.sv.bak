@@ -1,4 +1,4 @@
-module high_freq_queue(clk, rst_n, lft_smpl, rght_smpl, wrt_smpl, 
+module low_freq_queue(clk, rst_n, lft_smpl, rght_smpl, wrt_smpl, 
 		lft_out, rght_out, sequencing);
 
 input clk, rst_n, wrt_smpl;
@@ -6,50 +6,35 @@ input[15:0] lft_smpl, rght_smpl;
 output reg sequencing;
 output reg [15:0] lft_out, rght_out;
 
-reg[10:0] new_ptr, old_ptr, read_ptr;
+reg[9:0] new_ptr, old_ptr, read_ptr;
 
-dualPort1536x16 iLFT(.clk(clk), .we(wrt_smpl), .waddr(new_ptr), .raddr(read_ptr),
+dualPort1024x16 iLFT(.clk(clk), .we(wrt_smpl), .waddr(new_ptr), .raddr(read_ptr),
 	.wdata(lft_smpl), .rdata(lft_out));
 
-dualPort1536x16 iRGHT(.clk(clk), .we(wrt_smpl), .waddr(new_ptr), .raddr(read_ptr),
+dualPort1024x16 iRGHT(.clk(clk), .we(wrt_smpl), .waddr(new_ptr), .raddr(read_ptr),
 	.wdata(rght_smpl), .rdata(rght_out));
 
 reg full, rst_rd, inc_old, inc_new, inc_read;
-wire[10:0] end_ptr;
+wire[9:0] end_ptr;
 wire done;
 
 always @ (posedge clk, negedge rst_n)
 	if(!rst_n) full <= 0;
-	else if(new_ptr == 11'd1530) full <= 1;
+	else if(new_ptr == 10'd1020) full <= 1;
 
 always @ (posedge clk, negedge rst_n)
-	if(!rst_n) old_ptr <= 11'd0;
-	else if(inc_old) begin
-		if(old_ptr == 11'd1535)
-			old_ptr <= 11'd0;
-		else
-			old_ptr <= old_ptr + 1;
-	end
+	if(!rst_n) old_ptr <= 10'd0;
+	else if(inc_old) old_ptr <= old_ptr + 1;
 
 always @ (posedge clk, negedge rst_n)
-	if(!rst_n) new_ptr <= 11'd0;
-	else if(inc_new) begin
-		if(new_ptr == 11'd1535)
-			new_ptr <= 11'd0;
-		else
-			new_ptr <= new_ptr + 1;
-	end
+	if(!rst_n) new_ptr <= 10'd0;
+	else if(inc_new) new_ptr <= new_ptr + 1;
 
 always @ (posedge clk, negedge rst_n)
 	if(rst_rd) read_ptr <= old_ptr;
-	else if(inc_read) begin
-		if(read_ptr == 11'd1535)
-			read_ptr <= 1'd0;
-		else
-			read_ptr <= read_ptr + 1;
-	end
+	else if(inc_read) read_ptr <= read_ptr + 1;
 
-assign end_ptr = (old_ptr > 11'd515) ? (old_ptr - 11'd516) : (old_ptr + 11'd1020);
+assign end_ptr = old_ptr + 10'd1020;
 assign done = (read_ptr == end_ptr);
 
 typedef enum reg {WRITE, SEQ} state_t;

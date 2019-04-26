@@ -95,7 +95,7 @@ module Equalizer(clk,RST_n,LED,ADC_SS_n,ADC_MOSI,ADC_SCLK,ADC_MISO,
 	always @ (posedge clk, negedge rst_n)
 		if(!rst_n) cnt <= 18'd0;
 		else begin
-			cnt <= cnt + 1'b1;
+			cnt <= cnt + 1;
 			if(clr_cnt) cnt <= 18'd0;
 		end
 	

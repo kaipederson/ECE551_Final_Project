@@ -59,13 +59,14 @@ assign rght_chnnl = shft_reg[23:0];
 /////////////
 reg[4:0] bit_cntr;
 reg clr_cnt;
-wire eq22, eq24;
+wire eq22, eq23, eq24;
 
 always @ (posedge clk, negedge rst_n)
 	if(!rst_n) bit_cntr <= 5'h00;
 	else if(clr_cnt) bit_cntr <= 5'h00;
 	else if(sclk_rise) bit_cntr <= bit_cntr + 1'b1;
 assign eq22 = (bit_cntr == 5'd22) ? 1'b1 : 1'b0;
+assign eq23 = (bit_cntr == 5'd23) ? 1'b1 : 1'b0;
 assign eq24 = (bit_cntr == 5'd24) ? 1'b1 : 1'b0;
 
 ///////////////////

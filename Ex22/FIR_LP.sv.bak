@@ -82,7 +82,7 @@ module FIR_LP(lft_in,sequencing,rght_in,lft_out,rght_out,clk,rst_n);
 			if(!clr_ROM_pntr)begin
 				addr = addr +1'b1;
 			end
-			else addr = 10'h000;
+			else addr = 0'h000;
 		end
 	end
 	

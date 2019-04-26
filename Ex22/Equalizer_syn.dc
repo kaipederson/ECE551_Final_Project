@@ -1,0 +1,43 @@
+######
+#Read#
+######
+read_file  -format sverilog { ./I2S_Slave.sv }
+set current_design I2S_Slave
+
+#########
+# Clock #
+#########
+create_clock -name "clk" -period 2 -waveform { 0 1} {clk}
+set_dont_touch_network [find port clk]
+
+##########
+# Delays #
+##########
+set prim_inputs [remove_from_collection [all_inputs]\
+	[find port clk]]
+set_input_delay -clock clk 0.5 $prim_inputs
+set_output_delay -clock clk 0.75 [all_outputs]
+set_load 0.1 [all_outputs]
+
+############################
+# Wire load and transition #
+############################
+set_max_transition 0.15 [current_design]
+set_wire_load_model -name TSMC32K_LowK_Conservative \
+	-library tcbn401pbwptc
+
+###########
+# Compile #
+###########
+compile -map_effort medium
+set_fix_hold clk
+ungroup -all -flatten
+compile -map_effort medium
+
+###########
+# Reports #
+###########
+report_area > I2S_Slave_area.txt
+report_timing -delay max > I2S_Slave_dly.txt
+report_timing -delay min > I2S_Slave__dly.txt
+write -format verilog I2S_Slave -output I2S_Slave.vg
