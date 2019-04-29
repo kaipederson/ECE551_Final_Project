@@ -56,15 +56,15 @@ always_ff @ (posedge clk, negedge rst_n)
 	else state <= nxt;
 
 always_comb begin
-	trmt = 1'b0;
-	inc_addr = 1'b0;
+	trmt = 0;
+	inc_addr = 0;
 	nxt = IDLE;
 	case(state)
 	 ROM: nxt = SEND;
 	 SEND:
 		begin  	
-			trmt = 1'b1;
-			inc_addr = 1'b1;
+			trmt = 1;
+			inc_addr = 1;
 			nxt = WAIT;
 		end
 	 WAIT:	

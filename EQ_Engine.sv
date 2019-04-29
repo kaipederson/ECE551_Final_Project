@@ -6,7 +6,7 @@ input[23:0] POT_LP, POT_B1, POT_B2, POT_B3, POT_HP;
 input [11:0] VOL_POT;
 input clk, rst_n, vld;
 
-output reg signed [15:0] aud_out_lft, aud_out_rght;
+output signed [15:0] aud_out_lft, aud_out_rght;
 
 /// Queues ///
 wire[15:0] lftqlow, rghtqlow;
@@ -111,16 +111,16 @@ always @ (posedge clk, negedge rst_n)
 wire[15:0] lft_scaled_LP, rght_scaled_LP, lft_scaled_B1, rght_scaled_B1, lft_scaled_B2, rght_scaled_B2,
 	lft_scaled_B3, rght_scaled_B3, lft_scaled_HP, rght_scaled_HP;
 
-band_scale lftScaleLP(.POT(POT_LP), .audio(lftLPPipe), .scaled(lft_scaled_LP));
-band_scale rghtScaleLP(.POT(POT_LP), .audio(rghtLPPipe), .scaled(rght_scaled_LP));
-band_scale lftScaleB1(.POT(POT_B1), .audio(lftB1Pipe), .scaled(lft_scaled_B1));
-band_scale rghtScaleB1(.POT(POT_B1), .audio(rghtB1Pipe), .scaled(rght_scaled_B1));
-band_scale lftScaleB2(.POT(POT_B2), .audio(lftB2Pipe), .scaled(lft_scaled_B2));
-band_scale rghtScaleB2(.POT(POT_B2), .audio(rghtB2Pipe), .scaled(rght_scaled_B2));
-band_scale lftScaleB3(.POT(POT_B3), .audio(lftB3Pipe), .scaled(lft_scaled_B3));
-band_scale rghtScaleB3(.POT(POT_B3), .audio(rghtB3Pipe), .scaled(rght_scaled_B3));
-band_scale lftScaleHP(.POT(POT_HP), .audio(lftHPPipe), .scaled(lft_scaled_HP));
-band_scale rghtScaleHP(.POT(POT_HP), .audio(rghtHPPipe), .scaled(rght_scaled_HP));
+band_scale lftScaleLP(.POT(POT_LP), .audio(lftLPPipe), .scaled(lft_scaled_LP), .clk(clk), .rst_n(rst_n));
+band_scale rghtScaleLP(.POT(POT_LP), .audio(rghtLPPipe), .scaled(rght_scaled_LP), .clk(clk), .rst_n(rst_n));
+band_scale lftScaleB1(.POT(POT_B1), .audio(lftB1Pipe), .scaled(lft_scaled_B1), .clk(clk), .rst_n(rst_n));
+band_scale rghtScaleB1(.POT(POT_B1), .audio(rghtB1Pipe), .scaled(rght_scaled_B1), .clk(clk), .rst_n(rst_n));
+band_scale lftScaleB2(.POT(POT_B2), .audio(lftB2Pipe), .scaled(lft_scaled_B2), .clk(clk), .rst_n(rst_n));
+band_scale rghtScaleB2(.POT(POT_B2), .audio(rghtB2Pipe), .scaled(rght_scaled_B2), .clk(clk), .rst_n(rst_n));
+band_scale lftScaleB3(.POT(POT_B3), .audio(lftB3Pipe), .scaled(lft_scaled_B3), .clk(clk), .rst_n(rst_n));
+band_scale rghtScaleB3(.POT(POT_B3), .audio(rghtB3Pipe), .scaled(rght_scaled_B3), .clk(clk), .rst_n(rst_n));
+band_scale lftScaleHP(.POT(POT_HP), .audio(lftHPPipe), .scaled(lft_scaled_HP), .clk(clk), .rst_n(rst_n));
+band_scale rghtScaleHP(.POT(POT_HP), .audio(rghtHPPipe), .scaled(rght_scaled_HP), .clk(clk), .rst_n(rst_n));
 
 /// Summation ///
 reg signed[15:0] lftSum, rghtSum;
@@ -138,18 +138,20 @@ always @ (posedge clk, negedge rst_n)
 
 /// Volume ///
 reg [28:0] lftMult, rghtMult;
+wire[12:0] VolMult;
+assign VolMult = {1'b0, VOL_POT};
 always @ (posedge clk, negedge rst_n)
 	if(!rst_n) begin
 		lftMult <= 29'd0;
 		rghtMult <= 29'd0;
 	end
 	else begin
-		lftMult <= {1'b0, VOL_POT} * lftSum;
-		rghtMult <= {1'b0, VOL_POT} * rghtSum;
+		lftMult <= VolMult * lftSum;
+		rghtMult <= VolMult * rghtSum;
 	end
 
 /// Output ///
-always @ (posedge clk, negedge rst_n)
+/*always @ (posedge clk, negedge rst_n)
 	if(!rst_n) begin
 		aud_out_lft <= 16'h0000;
 		aud_out_rght <= 16'h0000;
@@ -157,6 +159,8 @@ always @ (posedge clk, negedge rst_n)
 	else begin
 		aud_out_lft <= lftMult[27:12];
 		aud_out_rght <= rghtMult[27:12];
-	end
+	end*/
+assign aud_out_lft = lftMult[27:12];
+assign aud_out_rght = rghtMult[27:12];
  
 endmodule 

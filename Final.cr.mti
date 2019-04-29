@@ -110,13 +110,6 @@ Model Technology ModelSim SE vlog 10.3c Compiler 2014.07 Jul 19 2014
 Top level modules:
 	ROM_B3
 
-} {} {}} {I:/ECE 551/Final Project/Equalizer.v} {1 {vlog -work work -vopt -stats=none {I:/ECE 551/Final Project/Equalizer.v}
-Model Technology ModelSim SE vlog 10.3c Compiler 2014.07 Jul 19 2014
--- Compiling module Equalizer
-
-Top level modules:
-	Equalizer
-
 } {} {}} {I:/ECE 551/Final Project/I2S_Slave.sv} {1 {vlog -work work -vopt -sv -stats=none {I:/ECE 551/Final Project/I2S_Slave.sv}
 Model Technology ModelSim SE vlog 10.3c Compiler 2014.07 Jul 19 2014
 -- Compiling module I2S_Slave
@@ -131,13 +124,6 @@ Model Technology ModelSim SE vlog 10.3c Compiler 2014.07 Jul 19 2014
 Top level modules:
 	FIR_HP
 
-} {} {}} {I:/ECE 551/Final Project/I2S_Master.sv} {1 {vlog -work work -vopt -sv -stats=none {I:/ECE 551/Final Project/I2S_Master.sv}
-Model Technology ModelSim SE vlog 10.3c Compiler 2014.07 Jul 19 2014
--- Compiling module I2S_Master
-
-Top level modules:
-	I2S_Master
-
 } {} {}} {I:/ECE 551/Final Project/high_freq_queue.sv} {1 {vlog -work work -vopt -sv -stats=none {I:/ECE 551/Final Project/high_freq_queue.sv}
 Model Technology ModelSim SE vlog 10.3c Compiler 2014.07 Jul 19 2014
 -- Compiling module high_freq_queue
@@ -145,19 +131,12 @@ Model Technology ModelSim SE vlog 10.3c Compiler 2014.07 Jul 19 2014
 Top level modules:
 	high_freq_queue
 
-} {} {}} {I:/ECE 551/Final Project/band_scale.v} {1 {vlog -work work -vopt -stats=none {I:/ECE 551/Final Project/band_scale.v}
+} {} {}} {I:/ECE 551/Final Project/I2S_Master.sv} {1 {vlog -work work -vopt -sv -stats=none {I:/ECE 551/Final Project/I2S_Master.sv}
 Model Technology ModelSim SE vlog 10.3c Compiler 2014.07 Jul 19 2014
--- Compiling module band_scale
+-- Compiling module I2S_Master
 
 Top level modules:
-	band_scale
-
-} {} {}} {I:/ECE 551/Final Project/slide_intf.sv} {1 {vlog -work work -vopt -sv -stats=none {I:\ECE 551\Final Project\slide_intf.sv}
-Model Technology ModelSim SE vlog 10.3c Compiler 2014.07 Jul 19 2014
--- Compiling module slide_intf
-
-Top level modules:
-	slide_intf
+	I2S_Master
 
 } {} {}} {I:/ECE 551/Final Project/ROM_HP.v} {1 {vlog -work work -vopt -stats=none {I:/ECE 551/Final Project/ROM_HP.v}
 Model Technology ModelSim SE vlog 10.3c Compiler 2014.07 Jul 19 2014
@@ -243,18 +222,18 @@ Model Technology ModelSim SE vlog 10.3c Compiler 2014.07 Jul 19 2014
 Top level modules:
 	A2D_intf
 
-} {} {}} {I:/ECE 551/Final Project/cmdROM.v} {1 {vlog -work work -vopt -stats=none {I:/ECE 551/Final Project/cmdROM.v}
-Model Technology ModelSim SE vlog 10.3c Compiler 2014.07 Jul 19 2014
--- Compiling module cmdROM
-
-Top level modules:
-	cmdROM
-
 } {} {}} {I:/ECE 551/Final Project/Equalizer_tb.sv} {1 {vlog -work work -vopt -sv -stats=none {I:/ECE 551/Final Project/Equalizer_tb.sv}
 Model Technology ModelSim SE vlog 10.3c Compiler 2014.07 Jul 19 2014
 -- Compiling module Equalizer_tb
 
 Top level modules:
 	Equalizer_tb
+
+} {} {}} {I:/ECE 551/Final Project/cmdROM.v} {1 {vlog -work work -vopt -stats=none {I:/ECE 551/Final Project/cmdROM.v}
+Model Technology ModelSim SE vlog 10.3c Compiler 2014.07 Jul 19 2014
+-- Compiling module cmdROM
+
+Top level modules:
+	cmdROM
 
 } {} {}}

@@ -3,7 +3,7 @@ module slide_intf(clk, rst_n, MISO, MOSI, SCLK, SS_n,
 
 input clk, rst_n, MISO;
 output MOSI, SCLK, SS_n;
-output reg[23:0] POT_LP, POT_B1, POT_B2, POT_B3, POT_HP;
+output reg[24:0] POT_LP, POT_B1, POT_B2, POT_B3, POT_HP;
 output reg[11:0] VOLUME;
 
 wire cnv_cmplt;
@@ -45,23 +45,26 @@ end
 
 reg[23:0] resSqr;
 always @ (posedge clk, negedge rst_n)
-	if(!rst_n) resSqr <= 23'd0;
+	if(!rst_n) resSqr <= 24'd0;
 	else resSqr <= res * res;
+
+wire signed[24:0] resSign;
+assign resSign = {1'b0, resSqr};
 always @ (posedge clk, negedge rst_n)
-	if(!rst_n) POT_LP <= 12'h000;
-	else if((chnnl == 3'b001) && cnv_cmplt) POT_LP <= resSqr;
+	if(!rst_n) POT_LP <= 25'd0;
+	else if((chnnl == 3'b001) && cnv_cmplt) POT_LP <= resSign;
 always @ (posedge clk, negedge rst_n)
-	if(!rst_n) POT_B1 <= 12'h000;
-	else if((chnnl == 3'b000) && cnv_cmplt) POT_B1 <= resSqr;
+	if(!rst_n) POT_B1 <= 25'd0;
+	else if((chnnl == 3'b000) && cnv_cmplt) POT_B1 <= resSign;
 always @ (posedge clk, negedge rst_n)
-	if(!rst_n) POT_B2 <= 12'h000;
-	else if((chnnl == 3'b100) && cnv_cmplt) POT_B2 <= resSqr;
+	if(!rst_n) POT_B2 <= 25'd0;
+	else if((chnnl == 3'b100) && cnv_cmplt) POT_B2 <= resSign;
 always @ (posedge clk, negedge rst_n)
-	if(!rst_n) POT_B3 <= 12'h000;
-	else if((chnnl == 3'b010) && cnv_cmplt) POT_B3 <= resSqr;
+	if(!rst_n) POT_B3 <= 25'd0;
+	else if((chnnl == 3'b010) && cnv_cmplt) POT_B3 <= resSign;
 always @ (posedge clk, negedge rst_n)
-	if(!rst_n) POT_HP <= 12'h000;
-	else if((chnnl == 3'b011) && cnv_cmplt) POT_HP <= resSqr;
+	if(!rst_n) POT_HP <= 25'd0;
+	else if((chnnl == 3'b011) && cnv_cmplt) POT_HP <= resSign;
 always @ (posedge clk, negedge rst_n)
 	if(!rst_n) VOLUME <= 12'h000;
 	else if((chnnl == 3'b111) && cnv_cmplt) VOLUME <= res;

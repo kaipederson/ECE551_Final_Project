@@ -31,9 +31,10 @@ always @ (posedge clk, negedge rst_n)
 	else if(inc_new) new_ptr <= new_ptr + 1;
 
 always @ (posedge clk, negedge rst_n)
-	if(rst_rd) read_ptr <= old_ptr;
+	if(!rst_n) read_ptr <= 10'd0;
 	else begin
-		if(inc_read) read_ptr <= read_ptr + 1;
+		if(rst_rd) read_ptr <= old_ptr;
+		else if(inc_read) read_ptr <= read_ptr + 1;
 	end
 
 assign end_ptr = old_ptr + 10'd1020;

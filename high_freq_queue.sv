@@ -41,12 +41,15 @@ always @ (posedge clk, negedge rst_n)
 	end
 
 always @ (posedge clk, negedge rst_n)
-	if(rst_rd) read_ptr <= old_ptr;
-	else if(inc_read) begin
-		if(read_ptr == 11'd1535)
+	if(!rst_n) read_ptr <= 11'd0;
+	else begin 
+		if(rst_rd) read_ptr <= old_ptr;
+		else if (inc_read) begin
+			if(read_ptr == 11'd1535)
 			read_ptr <= 1'd0;
-		else
+			else
 			read_ptr <= read_ptr + 1;
+		end
 	end
 
 assign end_ptr = (old_ptr > 11'd515) ? (old_ptr - 11'd516) : (old_ptr + 11'd1020);
