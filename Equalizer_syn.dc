@@ -1,0 +1,85 @@
+######
+#Read#
+######
+read_file  -format sverilog { 	./A2D_intf.sv\
+			      	./A2D_with_Pots.sv\
+			      	./ADC128S.sv\
+				./band_scale.v\
+				./BT_intf.sv\
+				./cmdROM.v\
+				./dualPort1024x16.v\
+				./dualPort1536x16.v\
+				./EQ_Engine.sv\
+				./Equalizer.v\
+				./FIR_B1.sv\
+				./FIR_B2.sv\
+				./FIR_B3.sv\
+				./FIR_HP.sv\
+				./FIR_LP.sv\
+				./high_freq_queue.sv\
+				./I2S_Master.sv\
+				./I2S_Slave.sv\
+				./low_freq_queue.sv\
+				./PB_rise.sv\
+				./PDM.sv\
+				./resp_ROM.v\
+				./ROM_B1.v\
+				./ROM_B2.v\
+				./ROM_B3.v\
+				./ROM_HP.v\
+				./ROM_LP.v\
+				./rst_synch.v\
+				./slide_intf.sv\
+				./snd_cmd.sv\
+				./SPI_ADC128S.sv\
+				./SPI_mstr.sv\
+				./spkr_drv.sv\
+				./tone_ROM_lft.v\
+				./tone_ROM_rght.v\
+				./UART.sv}
+
+set current_design Equalizer
+
+#########
+# Clock #
+#########
+create_clock -name "clk" -period 2.5 -waveform { 0 1} {clk}
+set_dont_touch_network [find port clk]
+set_dont_touch [find design dualPort*]
+set_dont_touch[find design ROM_*]
+set_dont_touch[find design cmdROM]
+
+##########
+# Delays #
+##########
+set prim_inputs [remove_from_collection [all_inputs]\
+	[find port clk]]
+set_input_delay -clock clk 0.75 $prim_inputs
+set_output_delay -clock clk 0.75 [all_outputs]
+set_load 0.1 [all_outputs]
+
+############################
+# Wire load and transition #
+############################
+set_max_transition 0.10 [current_design]
+set_wire_load_model -name TSMC32K_LowK_Conservative \
+	-library tcbn401pbwptc
+set_driving_cell -lib_cell ND2DBWP -from_pin A1 -library\
+	tcbn401pbwptc $prim_inputs
+
+###########
+# Compile #
+###########
+compile -map_effort high
+set_clock_uncertainty 0.12 clk
+set_fix_hold clk
+ungroup -all -flatten
+compile -area_effort high
+
+###########
+# Reports #
+###########
+report_area > Equalizer_area.txt
+report_timing -delay max > Equalizer_max_dly.txt
+report_timing -delay min > Equalizer_min_dly.txt
+write -format verilog Equalizer -output Equalizer.vg
