@@ -26,8 +26,7 @@ module Equalizer(clk,RST_n,LED,ADC_SS_n,ADC_MOSI,ADC_SCLK,ADC_MISO,
 	// Declare and needed wires or registers below here //
 	/////////////////////////////////////////////////////
 	wire rst_n; 
-	wire[23:0] POT_LP, POT_B1, POT_B2, POT_B3, POT_HP;
-	wire[11:0] VOLUME;
+	wire[23:0] POT_LP, POT_B1, POT_B2, POT_B3, POT_HP, VOLUME;
 	wire[23:0] lftI2S, rghtI2S;
 	wire vld;
 	wire[15:0] aud_eq_lft, aud_eq_rght;

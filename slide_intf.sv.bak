@@ -45,22 +45,22 @@ end
 
 reg[23:0] resSqr;
 always @ (posedge clk, negedge rst_n)
-	if(!rst_n) resSqr <= 24'd0;
+	if(!rst_n) resSqr <= 23'd0;
 	else resSqr <= res * res;
 always @ (posedge clk, negedge rst_n)
-	if(!rst_n) POT_LP <= 24'h000000;
+	if(!rst_n) POT_LP <= 12'h000;
 	else if((chnnl == 3'b001) && cnv_cmplt) POT_LP <= resSqr;
 always @ (posedge clk, negedge rst_n)
-	if(!rst_n) POT_B1 <= 24'h000000;
+	if(!rst_n) POT_B1 <= 12'h000;
 	else if((chnnl == 3'b000) && cnv_cmplt) POT_B1 <= resSqr;
 always @ (posedge clk, negedge rst_n)
-	if(!rst_n) POT_B2 <= 24'h000000;
+	if(!rst_n) POT_B2 <= 12'h000;
 	else if((chnnl == 3'b100) && cnv_cmplt) POT_B2 <= resSqr;
 always @ (posedge clk, negedge rst_n)
-	if(!rst_n) POT_B3 <= 24'h000000;
+	if(!rst_n) POT_B3 <= 12'h000;
 	else if((chnnl == 3'b010) && cnv_cmplt) POT_B3 <= resSqr;
 always @ (posedge clk, negedge rst_n)
-	if(!rst_n) POT_HP <= 24'h000000;
+	if(!rst_n) POT_HP <= 12'h000;
 	else if((chnnl == 3'b011) && cnv_cmplt) POT_HP <= resSqr;
 always @ (posedge clk, negedge rst_n)
 	if(!rst_n) VOLUME <= 12'h000;

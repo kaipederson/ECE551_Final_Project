@@ -71,6 +71,8 @@ initial begin
 	B3 = 12'h800;
 	HP = 12'h800;
 	repeat(3000000) @ (posedge clk);
+	VOL = 12'h800;
+	repeat(1000000) @ (posedge clk)
 	$stop;
 
 end

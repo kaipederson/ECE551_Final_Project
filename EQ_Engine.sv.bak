@@ -2,10 +2,11 @@ module EQ_Engine(clk, rst_n, vld, aud_in_lft, aud_in_rght, POT_LP, POT_B1,
 	POT_B2, POT_B3, POT_HP, VOL_POT, aud_out_lft, aud_out_rght);
 
 input[15:0] aud_in_lft, aud_in_rght;
-input[11:0] POT_LP, POT_B1, POT_B2, POT_B3, POT_HP, VOL_POT;
+input[23:0] POT_LP, POT_B1, POT_B2, POT_B3, POT_HP;
+input [11:0] VOL_POT;
 input clk, rst_n, vld;
 
-output reg[15:0] aud_out_lft, aud_out_rght;
+output reg signed [15:0] aud_out_lft, aud_out_rght;
 
 /// Queues ///
 wire[15:0] lftqlow, rghtqlow;
@@ -122,37 +123,29 @@ band_scale lftScaleHP(.POT(POT_HP), .audio(lftHPPipe), .scaled(lft_scaled_HP));
 band_scale rghtScaleHP(.POT(POT_HP), .audio(rghtHPPipe), .scaled(rght_scaled_HP));
 
 /// Summation ///
-wire signed[15:0] lftSum, rghtSum;
-assign lftSum = lft_scaled_LP + lft_scaled_B1 + lft_scaled_B2 + 
-			lft_scaled_B3 + lft_scaled_HP;
-assign rghtSum = rght_scaled_LP + rght_scaled_B1 + rght_scaled_B2 + 
-			rght_scaled_B3 + rght_scaled_HP;
-
-reg[15:0] lftSumPipe, rghtSumPipe;
+reg signed[15:0] lftSum, rghtSum;
 always @ (posedge clk, negedge rst_n)
 	if(!rst_n) begin
-		lftSumPipe <= 16'h0000;
-		rghtSumPipe <= 16'h0000;
+		lftSum <= 16'h0000;
+		rghtSum <= 16'h0000;
 	end
 	else begin
-		lftSumPipe <= lftSum;
-		rghtSumPipe <= rghtSum;
+		lftSum <= lft_scaled_LP + lft_scaled_B1 + lft_scaled_B2 + 
+			lft_scaled_B3 + lft_scaled_HP;
+		rghtSum <= rght_scaled_LP + rght_scaled_B1 + rght_scaled_B2 + 
+			rght_scaled_B3 + rght_scaled_HP;
 	end
 
 /// Volume ///
-wire signed[28:0] lftMult, rghtMult;
-assign lftMult = {1'b0, VOL_POT} * lftSumPipe;
-assign rghtMult = {1'b0, VOL_POT} * rghtSum;
-
-reg[28:0] lftMultPipe, rghtMultPipe;
+reg signed[28:0] lftMult, rghtMult;
 always @ (posedge clk, negedge rst_n)
 	if(!rst_n) begin
-		lftMultPipe <= 29'd0;
-		rghtMultPipe <= 29'd0;
+		lftMult <= 29'd0;
+		rghtMult <= 29'd0;
 	end
 	else begin
-		lftMultPipe <= rghtMult;
-		rghtMultPipe <= lftMult;
+		lftMult <= {1'b0, VOL_POT} * lftSum;
+		rghtMult <= {1'b0, VOL_POT} * rghtSum;
 	end
 
 /// Output ///

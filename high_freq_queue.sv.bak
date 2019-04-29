@@ -8,10 +8,10 @@ output reg [15:0] lft_out, rght_out;
 
 reg[10:0] new_ptr, old_ptr, read_ptr;
 
-dualPort1536x16 iLFT(.clk(clk), .we(wrt_smpl), .waddr(new_ptr), .raddr(read_ptr),
+dualPort1024x16 iLFT(.clk(clk), .we(wrt_smpl), .waddr(new_ptr), .raddr(read_ptr),
 	.wdata(lft_smpl), .rdata(lft_out));
 
-dualPort1536x16 iRGHT(.clk(clk), .we(wrt_smpl), .waddr(new_ptr), .raddr(read_ptr),
+dualPort1024x16 iRGHT(.clk(clk), .we(wrt_smpl), .waddr(new_ptr), .raddr(read_ptr),
 	.wdata(rght_smpl), .rdata(rght_out));
 
 reg full, rst_rd, inc_old, inc_new, inc_read;

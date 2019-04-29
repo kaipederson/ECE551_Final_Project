@@ -30,7 +30,7 @@ always @ (posedge clk, negedge rst_n)
 	if(!rst_n) new_ptr <= 10'd0;
 	else if(inc_new) new_ptr <= new_ptr + 1;
 
-always @ (posedge clk, posedge rst_rd)
+always @ (posedge clk, negedge rst_n)
 	if(rst_rd) read_ptr <= old_ptr;
 	else begin
 		if(inc_read) read_ptr <= read_ptr + 1;

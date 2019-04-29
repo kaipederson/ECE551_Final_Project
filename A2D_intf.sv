@@ -24,8 +24,8 @@ SPI_mstr mstr(.wrt(wrt), .done(done), .rd_data(res), .SS_n(SS_n), .SCLK(SCLK), .
 		.MOSI(MOSI), .MISO(MISO), .wt_data({2'b00,chnnl,11'h000}), .rst_n(rst_n));
 
 always_comb begin
-	wrt = 1'b0;
-	fin = 1'b0;
+	wrt = 0;
+	fin = 0;
 	nxt = DFLT;
 	
 	case(state) 
@@ -38,19 +38,19 @@ always_comb begin
 				end
 		WAIT: 	
 			begin
-				wrt = 1'b1;
+				wrt =1;
 				nxt = FETCH;
 			end
 		FETCH:
 			if(done) begin
-				fin = 1'b1;
+				fin = 1;
 			end
 			else begin
 				nxt = FETCH;
 			end
 		default:
 			if(strt_cnv) begin
-				wrt = 1'b1;
+				wrt = 1;
 				nxt = CONV;
 			end
 			

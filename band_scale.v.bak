@@ -5,7 +5,7 @@ input signed[15:0] audio;
 output signed[15:0] scaled;
 
 wire signed[12:0] POT_scale;
-assign POT_scale = {1'b0,POT[23:12]};
+assign POT_scale = {1'b0,POT_sqr[23:12]};
 
 wire signed[28:0] product;
 assign product = POT_scale * audio;
