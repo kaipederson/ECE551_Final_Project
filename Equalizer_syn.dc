@@ -28,7 +28,7 @@ read_file  -format sverilog { 	./A2D_intf.sv\
 				./ROM_B3.v\
 				./ROM_HP.v\
 				./ROM_LP.v\
-				./rst_synch.v\
+				./rst_synch.sv\
 				./slide_intf.sv\
 				./snd_cmd.sv\
 				./SPI_ADC128S.sv\
@@ -45,6 +45,9 @@ set current_design Equalizer
 #########
 create_clock -name "clk" -period 2.5 -waveform { 0 1} {clk}
 set_dont_touch_network [find port clk]
+set_dont_touch [find design dualPort*]
+set_dont_touch [find design ROM_*]
+set_dont_touch [find design cmdROM]
 
 ##########
 # Delays #
@@ -67,15 +70,16 @@ set_driving_cell -lib_cell ND2DBWP -from_pin A1 -library\
 ###########
 # Compile #
 ###########
-compile -map_effort medium
+compile -map_effort high
+set_clock_uncertainty 0.12 clk
 set_fix_hold clk
 ungroup -all -flatten
-compile -map_effort medium
+compile -area_effort high
 
 ###########
 # Reports #
 ###########
 report_area > Equalizer_area.txt
 report_timing -delay max > Equalizer_max_dly.txt
-report_timing -delay min > Equalzier_min_dly.txt
+report_timing -delay min > Equalizer_min_dly.txt
 write -format verilog Equalizer -output Equalizer.vg
