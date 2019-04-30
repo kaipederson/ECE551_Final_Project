@@ -137,8 +137,8 @@ always @ (posedge clk, negedge rst_n)
 	end
 
 /// Volume ///
-reg [28:0] lftMult, rghtMult;
-wire[12:0] VolMult;
+reg signed [28:0] lftMult, rghtMult;
+wire signed [12:0] VolMult;
 assign VolMult = {1'b0, VOL_POT};
 always @ (posedge clk, negedge rst_n)
 	if(!rst_n) begin
