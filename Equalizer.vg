@@ -1,10 +1,10 @@
 /////////////////////////////////////////////////////////////
 // Created by: Synopsys DC Expert(TM) in wire load mode
 // Version   : N-2017.09-SP5
-// Date      : Mon Apr 29 18:55:27 2019
+// Date      : Mon Apr 29 20:15:22 2019
 /////////////////////////////////////////////////////////////
 
-
+`timescale 1ns/1ps
 module Equalizer ( clk, RST_n, LED, ADC_SS_n, ADC_MOSI, ADC_SCLK, ADC_MISO, 
         I2S_data, I2S_ws, I2S_sclk, cmd_n, sht_dwn, lft_PDM, rght_PDM, Flt_n, 
         next_n, prev_n, RX, TX );

@@ -6,7 +6,7 @@ Report : timing
         -max_paths 1
 Design : Equalizer
 Version: N-2017.09-SP5
-Date   : Mon Apr 29 18:55:27 2019
+Date   : Mon Apr 29 20:15:22 2019
 ****************************************
 
  # A fanout number of 1000 was used for high fanout net computations.
