@@ -1,0 +1,80 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : Equalizer
+Version: N-2017.09-SP5
+Date   : Mon Apr 29 20:15:22 2019
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: NCCOM   Library: tcbn40lpbwptc
+Wire Load Model Mode: segmented
+
+  Startpoint: iSLD/VOLUME_reg[1]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: iEng/lftMult_reg[26]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  Equalizer          ZeroWireload          tcbn40lpbwptc
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  iSLD/VOLUME_reg[1]/CP (EDFCNQD1BWP)      0.00 #     0.00 r
+  iSLD/VOLUME_reg[1]/Q (EDFCNQD1BWP)       0.11       0.11 r
+  U9973/ZN (INVD1BWP)                      0.02       0.13 f
+  U10266/Z (CKBD4BWP)                      0.03       0.17 f
+  U10327/ZN (CKND4BWP)                     0.02       0.19 r
+  U11212/ZN (CKND2D1BWP)                   0.03       0.22 f
+  U13983/ZN (NR3D0BWP)                     0.07       0.28 r
+  iEng/mult_149/S1_2_0/CO (FA1D1BWP)       0.13       0.41 r
+  iEng/mult_149/S1_3_0/CO (FA1D0BWP)       0.12       0.53 r
+  iEng/mult_149/S1_4_0/CO (FA1D0BWP)       0.12       0.66 r
+  iEng/mult_149/S1_5_0/CO (FA1D0BWP)       0.12       0.78 r
+  iEng/mult_149/S1_6_0/CO (FA1D0BWP)       0.12       0.90 r
+  iEng/mult_149/S1_7_0/CO (FA1D0BWP)       0.12       1.03 r
+  iEng/mult_149/S1_8_0/CO (FA1D0BWP)       0.12       1.15 r
+  iEng/mult_149/S1_9_0/CO (FA1D0BWP)       0.12       1.27 r
+  iEng/mult_149/S1_10_0/CO (FA1D0BWP)      0.12       1.40 r
+  iEng/mult_149/S4_0/CO (FA1D0BWP)         0.13       1.52 r
+  U10192/Z (AN3XD1BWP)                     0.08       1.60 r
+  U9819/ZN (AOI21D1BWP)                    0.03       1.64 f
+  U4413/Z (OA21D1BWP)                      0.06       1.69 f
+  U4407/Z (OA21D1BWP)                      0.06       1.75 f
+  U4401/Z (OA21D1BWP)                      0.06       1.81 f
+  U4395/Z (OA21D1BWP)                      0.06       1.87 f
+  U4389/Z (OA21D1BWP)                      0.06       1.93 f
+  U4383/Z (OA21D1BWP)                      0.06       1.99 f
+  U4377/Z (OA21D1BWP)                      0.06       2.04 f
+  U4371/Z (OA21D1BWP)                      0.06       2.10 f
+  U4365/Z (OA21D1BWP)                      0.06       2.16 f
+  U4359/Z (OA21D1BWP)                      0.06       2.22 f
+  U4351/Z (OA21D1BWP)                      0.06       2.28 f
+  U11944/ZN (ND2D1BWP)                     0.02       2.30 r
+  U4348/ZN (XNR2D1BWP)                     0.08       2.37 f
+  iEng/lftMult_reg[26]/D (DFCNQD1BWP)      0.00       2.37 f
+  data arrival time                                   2.37
+
+  clock clk (rise edge)                    2.50       2.50
+  clock network delay (ideal)              0.00       2.50
+  clock uncertainty                       -0.12       2.38
+  iEng/lftMult_reg[26]/CP (DFCNQD1BWP)     0.00       2.38 r
+  library setup time                      -0.01       2.37
+  data required time                                  2.37
+  -----------------------------------------------------------
+  data required time                                  2.37
+  data arrival time                                  -2.37
+  -----------------------------------------------------------
+  slack (MET)                                         0.00
+
+
+1

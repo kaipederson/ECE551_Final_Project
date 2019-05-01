@@ -1,0 +1,24 @@
+module band_scale(clk, rst_n, scaled, POT, audio);
+
+input clk, rst_n;
+input[24:0] POT;
+input signed[15:0] audio;
+output signed[15:0] scaled;
+
+wire signed[28:0] product;
+assign product = POT * audio;
+
+reg[28:0] prodPipe;
+always @ (posedge clk, negedge rst_n)
+	if(!rst_n) prodPipe <= 29'd0;
+	else prodPipe <= product;
+
+wire sat_flag_neg;
+wire sat_flag_pos;
+
+assign sat_flag_neg = prodPipe[28] & ~(&prodPipe[27:25]);
+assign sat_flag_pos = ~prodPipe[28] & |prodPipe[27:25];
+
+assign scaled = sat_flag_neg ? 16'h8000 : (sat_flag_pos ? 16'h7FFF : prodPipe[25:10]);
+
+endmodule  

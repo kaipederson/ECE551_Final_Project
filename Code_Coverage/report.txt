@@ -1,0 +1,215 @@
+Coverage Report Summary Data by file
+
+=================================================================================
+=== File: /userspace/k/kpederson3/ECE551/Code_Coverage/A2D_intf.sv
+=================================================================================
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    Stmts                           19        19         0     100.0
+    Branches                        15        15         0     100.0
+    FEC Condition Terms              0         0         0     100.0
+    FEC Expression Terms             0         0         0     100.0
+
+=================================================================================
+=== File: /userspace/k/kpederson3/ECE551/Code_Coverage/A2D_with_Pots.sv
+=================================================================================
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    Stmts                           23        23         0     100.0
+    Branches                        29        28         1      96.5
+    FEC Condition Terms              0         0         0     100.0
+    FEC Expression Terms             2         2         0     100.0
+
+=================================================================================
+=== File: /userspace/k/kpederson3/ECE551/Code_Coverage/BT_intf.sv
+=================================================================================
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    Stmts                           35        29         6      82.8
+    Branches                        24        22         2      91.6
+    FEC Condition Terms              0         0         0     100.0
+    FEC Expression Terms             0         0         0     100.0
+
+=================================================================================
+=== File: /userspace/k/kpederson3/ECE551/Code_Coverage/EQ_Engine.sv
+=================================================================================
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    Stmts                           41        41         0     100.0
+    Branches                        13        13         0     100.0
+    FEC Condition Terms              0         0         0     100.0
+    FEC Expression Terms             0         0         0     100.0
+
+=================================================================================
+=== File: /userspace/k/kpederson3/ECE551/Code_Coverage/Equalizer.v
+=================================================================================
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    Stmts                            9         8         1      88.8
+    Branches                        11         8         3      72.7
+    FEC Condition Terms              0         0         0     100.0
+    FEC Expression Terms             2         0         2       0.0
+
+=================================================================================
+=== File: /userspace/k/kpederson3/ECE551/Code_Coverage/FIR_B1.sv
+=================================================================================
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    Stmts                           28        28         0     100.0
+    Branches                        18        18         0     100.0
+    FEC Condition Terms              0         0         0     100.0
+    FEC Expression Terms             0         0         0     100.0
+
+=================================================================================
+=== File: /userspace/k/kpederson3/ECE551/Code_Coverage/FIR_B2.sv
+=================================================================================
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    Stmts                           28        28         0     100.0
+    Branches                        18        18         0     100.0
+    FEC Condition Terms              0         0         0     100.0
+    FEC Expression Terms             0         0         0     100.0
+
+=================================================================================
+=== File: /userspace/k/kpederson3/ECE551/Code_Coverage/FIR_B3.sv
+=================================================================================
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    Stmts                           28        28         0     100.0
+    Branches                        18        18         0     100.0
+    FEC Condition Terms              0         0         0     100.0
+    FEC Expression Terms             0         0         0     100.0
+
+=================================================================================
+=== File: /userspace/k/kpederson3/ECE551/Code_Coverage/FIR_HP.sv
+=================================================================================
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    Stmts                           28        28         0     100.0
+    Branches                        18        18         0     100.0
+    FEC Condition Terms              0         0         0     100.0
+    FEC Expression Terms             0         0         0     100.0
+
+=================================================================================
+=== File: /userspace/k/kpederson3/ECE551/Code_Coverage/FIR_LP.sv
+=================================================================================
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    Stmts                           28        28         0     100.0
+    Branches                        18        18         0     100.0
+    FEC Condition Terms              0         0         0     100.0
+    FEC Expression Terms             0         0         0     100.0
+
+=================================================================================
+=== File: /userspace/k/kpederson3/ECE551/Code_Coverage/I2S_Slave.sv
+=================================================================================
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    Stmts                           49        48         1      97.9
+    Branches                        29        28         1      96.5
+    FEC Condition Terms              2         0         2       0.0
+    FEC Expression Terms             4         4         0     100.0
+
+=================================================================================
+=== File: /userspace/k/kpederson3/ECE551/Code_Coverage/PB_rise.sv
+=================================================================================
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    Stmts                            8         8         0     100.0
+    Branches                         2         2         0     100.0
+    FEC Condition Terms              0         0         0     100.0
+    FEC Expression Terms             2         0         2       0.0
+
+=================================================================================
+=== File: /userspace/k/kpederson3/ECE551/Code_Coverage/PDM.sv
+=================================================================================
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    Stmts                           11        11         0     100.0
+    Branches                        10        10         0     100.0
+    FEC Condition Terms              0         0         0     100.0
+    FEC Expression Terms             0         0         0     100.0
+
+=================================================================================
+=== File: /userspace/k/kpederson3/ECE551/Code_Coverage/SPI_mstr.sv
+=================================================================================
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    Stmts                           38        38         0     100.0
+    Branches                        35        35         0     100.0
+    FEC Condition Terms              2         1         1      50.0
+    FEC Expression Terms             0         0         0     100.0
+
+=================================================================================
+=== File: /userspace/k/kpederson3/ECE551/Code_Coverage/band_scale.v
+=================================================================================
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    Stmts                            5         5         0     100.0
+    Branches                         6         4         2      66.6
+    FEC Condition Terms              0         0         0     100.0
+    FEC Expression Terms             0         0         0     100.0
+
+=================================================================================
+=== File: /userspace/k/kpederson3/ECE551/Code_Coverage/high_freq_queue.sv
+=================================================================================
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    Stmts                           38        38         0     100.0
+    Branches                        33        33         0     100.0
+    FEC Condition Terms              0         0         0     100.0
+    FEC Expression Terms             0         0         0     100.0
+
+=================================================================================
+=== File: /userspace/k/kpederson3/ECE551/Code_Coverage/low_freq_queue.sv
+=================================================================================
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    Stmts                           35        35         0     100.0
+    Branches                        25        25         0     100.0
+    FEC Condition Terms              0         0         0     100.0
+    FEC Expression Terms             0         0         0     100.0
+
+=================================================================================
+=== File: /userspace/k/kpederson3/ECE551/Code_Coverage/rst_synch.v
+=================================================================================
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    Stmts                            5         5         0     100.0
+    Branches                         2         2         0     100.0
+    FEC Condition Terms              0         0         0     100.0
+    FEC Expression Terms             0         0         0     100.0
+
+=================================================================================
+=== File: /userspace/k/kpederson3/ECE551/Code_Coverage/slide_intf.sv
+=================================================================================
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    Stmts                           34        34         0     100.0
+    Branches                        31        31         0     100.0
+    FEC Condition Terms             16        15         1      93.7
+    FEC Expression Terms             0         0         0     100.0
+
+=================================================================================
+=== File: /userspace/k/kpederson3/ECE551/Code_Coverage/snd_cmd.sv
+=================================================================================
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    Stmts                           24        24         0     100.0
+    Branches                        18        18         0     100.0
+    FEC Condition Terms              0         0         0     100.0
+    FEC Expression Terms             2         2         0     100.0
+
+=================================================================================
+=== File: /userspace/k/kpederson3/ECE551/Code_Coverage/spkr_drv.sv
+=================================================================================
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    Stmts                            6         6         0     100.0
+    Branches                         6         6         0     100.0
+    FEC Condition Terms              0         0         0     100.0
+    FEC Expression Terms             0         0         0     100.0
+
+
+Total Coverage By File (code coverage only, filtered view): 85.6%
+
