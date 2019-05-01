@@ -1,4 +1,37 @@
-module sqrt(mag, go, clk, rst_n, sqrt, done);
+module sqrt(mag,go,clk,rst_n,sqrt,done);
+   input reg[15:0]mag;
+   input go,clk,rst_n;
+   output reg[7:0]sqrt=8'b00000000;
+   output reg done;
+   reg [7:0] count=8'b1000_0000;
+   reg [7:0] sqrt1 = 8'b1000_0000;
+
+
+
+   always@(posedge clk,negedge rst_n)begin
+	if(go)begin
+	if(!rst_n) begin
+	   count<=8'b1000_0000;
+	end
+	if(sqrt1*sqrt1 > mag)begin
+	   count<={count[0],count[7:1]};
+	   sqrt1<=sqrt1^count;
+	end
+	else if(sqrt1*sqrt1<=mag)begin
+	   count<={count[0],count[7:1]};
+	   sqrt1<=sqrt1|{count[0],count[7:1]};
+	end
+	if(count==8'b0000_0001) done <= 1;
+	else done <= 0;
+	end
+	sqrt <= sqrt1;
+   end
+
+endmodule
+
+
+
+/* module sqrt(mag, go, clk, rst_n, sqrt, done);
 
 input go, clk, rst_n;
 input unsigned [15:0] mag;
@@ -72,4 +105,4 @@ begin
 	end
 end
 
-endmodule
+endmodule */
